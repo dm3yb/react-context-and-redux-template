@@ -1,27 +1,12 @@
 import { twMerge } from 'tailwind-merge'
 import './App.css'
-import { useTheme } from './contexts/theme-context'
-import { ThemeVariantEnum } from './types/context'
 
 export default function App() {
-	const { theme, toggleTheme } = useTheme()
-
-	const isDarkTheme = theme === ThemeVariantEnum.DARK
-	const isThemeText = theme === ThemeVariantEnum.LIGHT ? 'Dark' : 'Light'
-
 	return (
-		<main
-			className={twMerge(
-				'min-h-screen py-20 bg-white dark:bg-gray-800',
-				isDarkTheme && 'dark'
-			)}
-		>
+		<main className={twMerge('min-h-screen py-20 bg-white dark:bg-gray-800')}>
 			<div className='container mx-auto px-4'>
-				<button
-					className='px-5 py-2 border dark:border-white/75 dark:text-white/75 rounded-lg cursor-pointer'
-					onClick={toggleTheme}
-				>
-					{isThemeText}
+				<button className='px-5 py-2 border dark:border-white/75 dark:text-white/75 rounded-lg cursor-pointer'>
+					Theme
 				</button>
 				{Array.from({ length: 100 }).map((_, i) => (
 					<p
