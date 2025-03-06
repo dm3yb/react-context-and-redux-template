@@ -1,18 +1,21 @@
 import { twMerge } from 'tailwind-merge'
 import './App.css'
+import { CounterControls } from './components/counter-controls'
+import { DisplayCounter } from './components/display-counter'
 
 export default function App() {
 	return (
 		<main className={twMerge('min-h-screen py-20 bg-white dark:bg-gray-800')}>
-			<div className='container mx-auto px-4'>
+			<div className='flex flex-col items-start container mx-auto px-4 space-y-5'>
+				<DisplayCounter />
+
+				<CounterControls />
+
 				<button className='px-5 py-2 border dark:border-white/75 dark:text-white/75 rounded-lg cursor-pointer'>
 					Theme
 				</button>
 				{Array.from({ length: 100 }).map((_, i) => (
-					<p
-						className='leading-loose mt-5 text-black dark:text-white/75'
-						key={i}
-					>
+					<p className='leading-loose text-black dark:text-white/75' key={i}>
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
 						ratione nisi placeat perspiciatis praesentium rerum quaerat
 						temporibus quasi repellendus minus nihil, tempore repudiandae beatae
