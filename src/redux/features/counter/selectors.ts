@@ -1,5 +1,3 @@
-import { RootStateType } from "../../types/global"
+import { RootState } from "../../store"
 
-export function counterSelector(state: RootStateType) {
-		return state.counter;
-}
+export const counterSelector = (state: RootState) => state.counter

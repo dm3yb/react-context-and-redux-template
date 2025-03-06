@@ -6,6 +6,7 @@ import {
 
 export const CounterControls = () => {
 	const dispatch = useDispatch()
+
 	const increment = incrementCounter()
 	const decrement = decrementCounter()
 

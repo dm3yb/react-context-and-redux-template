@@ -6,7 +6,7 @@ export const DisplayCounter = () => {
 
 	return (
 		<div className='flex items-center space-x-2 text-xl uppercase'>
-			<span>counter is:</span>
+			<span>Current counter is:</span>
 			<span>{counter}</span>
 		</div>
 	)

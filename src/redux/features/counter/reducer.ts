@@ -1,20 +1,17 @@
-import { CounterActionEnum } from "../../types/global"
+import { CounterAction, CounterActionType } from "../../../types/global"
 
-const initialState = 1;
+// Set a initial counter state
+const initialState = 1
 
-type CounterAction ={
-	type: CounterActionEnum;
-}
-
-export function counterReducer(state: number = initialState, action: CounterAction) { 
-	switch (action.type) {
-		case CounterActionEnum.INCREMENT:
-			return state + 1;
-		
-		case CounterActionEnum.DECREMENT:
-			return state - 1;
-			
-		default:
-			return state;
-	}
+export function counterReducer(state = initialState, action: CounterAction): number {
+  switch (action.type) {
+    case CounterActionType.INCREMENT:
+      return state + 1
+    
+    case CounterActionType.DECREMENT:
+      return state - 1
+        
+    default:
+      return state // Always return the current state for unknown actions
+  }
 }
