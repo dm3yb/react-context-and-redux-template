@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { twMerge } from 'tailwind-merge'
 import './App.css'
+import { useTheme } from './contexts/theme-context'
+import { ThemeVariantEnum } from './types/context'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+	const { theme, toggleTheme } = useTheme()
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	const isDarkTheme = theme === ThemeVariantEnum.DARK
+	const isThemeText = theme === ThemeVariantEnum.LIGHT ? 'Dark' : 'Light'
+
+	return (
+		<main
+			className={twMerge(
+				'min-h-screen py-20 bg-white dark:bg-gray-800',
+				isDarkTheme && 'dark'
+			)}
+		>
+			<div className='container mx-auto px-4'>
+				<button
+					className='px-5 py-2 border dark:border-white/75 dark:text-white/75 rounded-lg cursor-pointer'
+					onClick={toggleTheme}
+				>
+					{isThemeText}
+				</button>
+				{Array.from({ length: 100 }).map((_, i) => (
+					<p
+						className='leading-loose mt-5 text-black dark:text-white/75'
+						key={i}
+					>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
+						ratione nisi placeat perspiciatis praesentium rerum quaerat
+						temporibus quasi repellendus minus nihil, tempore repudiandae beatae
+						ducimus reprehenderit dolore sequi sint odio ullam optio quo
+						voluptatum nulla consequatur vitae! Saepe nesciunt culpa porro
+						numquam? Dolorum error ratione ducimus. Accusamus, dolorum
+						repellendus illo voluptatum at, sequi saepe assumenda eius ab,
+						adipisci itaque sed. Voluptate reprehenderit quo error quos? Natus,
+						laboriosam sint doloremque iusto accusamus repellat labore
+						cupiditate maiores! Maxime commodi praesentium, dicta neque
+						cupiditate sint maiores. Quibusdam officiis dignissimos obcaecati
+						explicabo unde harum voluptates ratione rem, est repudiandae?
+						Aspernatur a inventore hic veniam?
+					</p>
+				))}
+			</div>
+		</main>
+	)
 }
-
-export default App
